@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.sampleapp.proj1.Proj1Application;
-import com.sampleapp.proj1.models.Course;
+import com.sampleapp.proj1.models.Coursebasic;
 
 //@RunWith(SpringRunner.class)
 @SpringBootTest(classes = Proj1Application.class)
@@ -34,20 +34,20 @@ public class JPQLTest {
 
 	@Test
 	public void jpql_typed() {
-		TypedQuery<Course> query = 
-					em.createQuery("Select  c  From Course c", Course.class);
+		TypedQuery<Coursebasic> query = 
+					em.createQuery("Select  c  From Course c", Coursebasic.class);
 		
-		List<Course> resultList = query.getResultList();
+		List<Coursebasic> resultList = query.getResultList();
 		
 		logger.info("Select  c  From Course c -> {}",resultList);
 	}
 
 	@Test
 	public void jpql_where() {
-		TypedQuery<Course> query = 
-					em.createQuery("Select  c  From Course c where name like '%100 Steps'", Course.class);
+		TypedQuery<Coursebasic> query = 
+					em.createQuery("Select  c  From Course c where name like '%100 Steps'", Coursebasic.class);
 		
-		List<Course> resultList = query.getResultList();
+		List<Coursebasic> resultList = query.getResultList();
 		
 		logger.info("Select  c  From Course c where name like '%100 Steps'-> {}",resultList);
 		//[Course[Web Services in 100 Steps], Course[Spring Boot in 100 Steps]]

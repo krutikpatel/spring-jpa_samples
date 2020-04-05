@@ -8,8 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.sampleapp.proj1.models.Course;
-import com.sampleapp.proj1.repositories.CourseRepository;
+import com.sampleapp.proj1.models.Coursebasic;
+import com.sampleapp.proj1.repositories.CoursebasicRepository;
 
 @SpringBootTest
 class Proj1ApplicationTests {
@@ -21,11 +21,11 @@ class Proj1ApplicationTests {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
-	CourseRepository repository;
+	CoursebasicRepository repository;
 	
 	@Test
 	public void findById_basic() {
-		Course course = repository.findById(10001L);
+		Coursebasic course = repository.findById(10001L);
 		assertEquals("JPA in 50 Steps", course.getName());
 	}
 

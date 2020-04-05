@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 
 import com.sampleapp.proj1.Proj1Application;
-import com.sampleapp.proj1.models.Course;
+import com.sampleapp.proj1.models.Coursebasic;
 
 /*
  * knote:
@@ -20,16 +20,16 @@ import com.sampleapp.proj1.models.Course;
  */
 //@RunWith(SpringRunner.class) knote: this is not reqd seems in newer versions
 @SpringBootTest(classes=Proj1Application.class)
-public class CourseRepositoryTest {
+public class CoursebasicRepositoryTest {
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
-	CourseRepository repository;
+	CoursebasicRepository repository;
 	
 	@Test
 	public void findById_basic() {
-		Course course = repository.findById(10001L);
+		Coursebasic course = repository.findById(10001L);
 		assertEquals("JPA in 50 Steps", course.getName());
 	}
 
@@ -45,7 +45,7 @@ public class CourseRepositoryTest {
 	public void save_basic() {
 
 		// get a course
-		Course course = repository.findById(10001L);
+		Coursebasic course = repository.findById(10001L);
 		assertEquals("JPA in 50 Steps", course.getName());
 
 		// update details
@@ -54,7 +54,7 @@ public class CourseRepositoryTest {
 		repository.save(course);
 
 		// check the value
-		Course course1 = repository.findById(10001L);
+		Coursebasic course1 = repository.findById(10001L);
 		assertEquals("JPA in 50 Steps - Updated", course1.getName());
 	}
 }

@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Course {
+public class Coursebasic {
 
 	@Id
 	@GeneratedValue
@@ -16,10 +16,10 @@ public class Course {
 	/*
 	 * knote: JPA requires us to add no arg constructor so that it can create beans. protected so that others cannot access this ctr
 	 */
-	protected Course() {
+	protected Coursebasic() {
 	}
 
-	public Course(String name) {
+	public Coursebasic(String name) {
 		this.name = name;
 	}
 

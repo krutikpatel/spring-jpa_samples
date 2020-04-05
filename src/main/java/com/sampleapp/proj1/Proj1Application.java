@@ -7,8 +7,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.sampleapp.proj1.models.Course;
-import com.sampleapp.proj1.repositories.CourseRepository;
+import com.sampleapp.proj1.models.Coursebasic;
+import com.sampleapp.proj1.repositories.CoursebasicRepository;
 
 /*
  * knote:
@@ -26,11 +26,11 @@ public class Proj1Application implements CommandLineRunner {
 	}
 
 	@Autowired
-	private CourseRepository repository;
+	private CoursebasicRepository repository;
 
 	@Override
 	public void run(String... arg0) throws Exception {
-		Course course = repository.findById(10001L);
+		Coursebasic course = repository.findById(10001L);
 		
 		logger.info("Course 10001 -> {}", course);
 		
