@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.sampleapp.proj1.models.Coursebasic;
 import com.sampleapp.proj1.repositories.CoursebasicRepository;
+import com.sampleapp.proj1.repositories.StudentRepository;
 
 /*
  * knote:
@@ -28,6 +29,9 @@ public class Proj1Application implements CommandLineRunner {
 	@Autowired
 	private CoursebasicRepository repository;
 
+	@Autowired
+	private StudentRepository studentRepository;
+
 	@Override
 	public void run(String... arg0) throws Exception {
 		Coursebasic course = repository.findById(10001L);
@@ -40,5 +44,7 @@ public class Proj1Application implements CommandLineRunner {
 		//repository.save(new Course("Microservices in 100 Steps"));
 		
 		//repository.playWithEntityManager();
+		
+		studentRepository.saveStudentWithPassport();
 	}
 }
