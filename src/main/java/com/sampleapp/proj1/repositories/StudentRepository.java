@@ -56,6 +56,7 @@ public class StudentRepository {
 	 * 	-PersistenceContext is context for that transaction.
 	 * 	-DB query is ONLY made at "end of transaction"
 	 * 		-If method is not marked @Transactional, each call is its own transaction and PersistenceContext too.
+	 *  -If any of db operation fails in @Transactional method, everything will be rolled back.
 	 */
 	public void someOperationToUnderstandPersistenceContext() {
 		//Database Operation 1 - Retrieve student
@@ -66,7 +67,9 @@ public class StudentRepository {
 		//Database Operation 2 - Retrieve passport
 		/*
 		 * knote: if we did not have "Lazy Fetch", we would get exception here, ALso if method is not @Transactional, we will get exception.
+		 * 		-because this call is done without "em" object and assumes PersisteneContext of last method.
 		 * 		-conclusion: lazyFetch need same Transaction as parent class.
+		 * 		
 		 */
 		Passport passport = student.getPassport();
 		//Persistence Context (student, passport)
