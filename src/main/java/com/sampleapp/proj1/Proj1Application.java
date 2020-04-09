@@ -1,5 +1,8 @@
 package com.sampleapp.proj1;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +10,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.sampleapp.proj1.models.Course;
 import com.sampleapp.proj1.models.Coursebasic;
+import com.sampleapp.proj1.models.Review;
+import com.sampleapp.proj1.repositories.CourseRepository;
 import com.sampleapp.proj1.repositories.CoursebasicRepository;
 import com.sampleapp.proj1.repositories.StudentRepository;
 
@@ -32,6 +38,9 @@ public class Proj1Application implements CommandLineRunner {
 	@Autowired
 	private StudentRepository studentRepository;
 
+	@Autowired
+	private CourseRepository courseRepository;
+
 	@Override
 	public void run(String... arg0) throws Exception {
 		Coursebasic course = repository.findById(10001L);
@@ -45,6 +54,21 @@ public class Proj1Application implements CommandLineRunner {
 		
 		//repository.playWithEntityManager();
 		
-		studentRepository.saveStudentWithPassport();
+		//studentRepository.saveStudentWithPassport();
+		
+		/*
+		//OneToMany
+		List<Review> reviews = new ArrayList<>();
+		
+		reviews.add(new Review("5", "Great Hands-on Stuff."));	
+		reviews.add(new Review("5", "Hatsoff."));
+
+		courseRepository.addReviewsForCourse(10003L, reviews );
+		
+		Course c = courseRepository.findById(10003L);
+		logger.info("************"+c.getName());
+		logger.info("************"+c.getReviews().size());
+		*/
 	}
+	
 }

@@ -3,6 +3,7 @@ package com.sampleapp.proj1.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Review {
@@ -14,6 +15,15 @@ public class Review {
 	private String rating;
 
 	private String description;
+
+	/*
+	 * knote: as a result of this, Review DB table will generate courseID column, as foreign key col
+	 */
+	/*
+	 * knote: fetch strategy by default for @ManyToOne is always EagerFetch
+	 */
+	@ManyToOne
+	private Course course;
 
 	protected Review() {
 	}
@@ -43,6 +53,14 @@ public class Review {
 		return id;
 	}
 
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+	
 	@Override
 	public String toString() {
 		return String.format("Review[%s %s]", rating, description);

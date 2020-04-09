@@ -3,6 +3,11 @@ package com.sampleapp.proj1.repositories;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.transaction.Transactional;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -14,6 +19,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.sampleapp.proj1.Proj1Application;
 import com.sampleapp.proj1.models.Course;
+import com.sampleapp.proj1.models.Review;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Proj1Application.class)
@@ -60,4 +66,23 @@ public class CourseRepositoryTest {
 		repository.playWithEntityManager();
 	}
 
+	@Test
+	@Transactional
+	public void testGetOneToMany() {
+		List<Review> reviews = new ArrayList<>();
+		
+		reviews.add(new Review("5", "Great Hands-on Stuff."));	
+		reviews.add(new Review("5", "Hatsoff."));
+
+		repository.addReviewsForCourse(10003L, reviews );
+		
+		Course c = repository.findById(10003L);
+		logger.info("************"+c.getName());
+		
+		/*
+		 * knote: without @Transational, we will get LazyInitializationException, because we are assuming existing repo connection
+		 */
+		logger.info("************"+c.getReviews().size());
+
+	}
 }

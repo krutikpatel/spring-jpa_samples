@@ -45,11 +45,25 @@ public class StudentRepositoryTest {
 	@Transactional
 	/*
 	 * knote: because we have LazyFetch and we want to make next query, we made this method Transactional
+	 * 			-Test for OneToMany/ManyToOne
 	 */
 	public void retrieveStudentAndPassportDetails() {
 		Student student = em.find(Student.class, 20001L);
 		logger.info("student -> {}", student);
 		logger.info("passport -> {}",student.getPassport());
 		//assert.
+	}
+	
+	@Test
+	@Transactional
+	/*
+	 * knote: because we have LazyFetch and we want to make next query, we made this method Transactional
+	 * 			-Test for ManyToMany
+	 */
+	public void retrieveStudentAndCourses() {
+		Student student = em.find(Student.class, 20001L);
+		
+		logger.info("student -> {}", student);
+		logger.info("courses -> {}", student.getCourses());
 	}
 }

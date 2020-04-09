@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.sampleapp.proj1.models.Course;
 import com.sampleapp.proj1.models.Passport;
 import com.sampleapp.proj1.models.Student;
 
@@ -83,4 +84,27 @@ public class StudentRepository {
 		//Persistence Context (student++ , passport++) , now everything will be saved to DB here at end of method
 	}
 
+	public void insertHardcodedStudentAndCourse(){
+		Student student = new Student("Jack");
+		Course course = new Course("Microservices in 100 Steps");
+		em.persist(student);
+		em.persist(course);
+		
+		student.addCourse(course);
+		course.addStudent(student);
+		em.persist(student);
+	}
+
+	/*
+	 * knote: ManyToMany insert example
+	 */
+	public void insertStudentAndCourse(Student student, Course course){
+		//Student student = new Student("Jack");
+		//Course course = new Course("Microservices in 100 Steps");
+		student.addCourse(course);
+		course.addStudent(student);
+
+		em.persist(student);
+		em.persist(course);
+	}
 }

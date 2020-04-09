@@ -1,5 +1,7 @@
 package com.sampleapp.proj1.repositories;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.sampleapp.proj1.models.Course;
+import com.sampleapp.proj1.models.Review;
 
 @Repository
 @Transactional
@@ -45,7 +48,47 @@ public class CourseRepository {
 		
 		Course course2 = findById(10001L);
 		
-		course2.setName("JPA in 50 Steps - Updated");
+		course2.setName("JPA in 50 Steps - Updated");	
+	}
+	
+	/*
+	 * knote: sample method to see add/insert operations for OneToMany, ManyToOne
+	 */
+	public void addHardcodedReviewsForCourse_Example() {
+		//get the course 10003
+		Course course = findById(10003L);
+		logger.info("course.getReviews() -> {}", course.getReviews());
 		
+		//add 2 reviews to it
+		Review review1 = new Review("5", "Great Hands-on Stuff.");	
+		Review review2 = new Review("5", "Hatsoff.");
+		
+		/* knote: since this is bidirectional relationsship and we need to set data for both sides
+		 * setting the relationship
+		 */
+		course.addReview(review1);
+		review1.setCourse(course);
+		
+		course.addReview(review2);
+		review2.setCourse(course);
+		
+		//save it to the database
+		em.persist(review1);
+		em.persist(review2);
+	}
+	
+	/*
+	 * knote: OneToMany insert example
+	 */
+	public void addReviewsForCourse(Long courseId, List<Review> reviews) {		
+		Course course = findById(courseId);
+		logger.info("course.getReviews() -> {}", course.getReviews());
+		for(Review review:reviews)
+		{			
+			//setting the relationship
+			course.addReview(review);
+			review.setCourse(course);
+			em.persist(review);
+		}
 	}
 }
