@@ -4,6 +4,7 @@ All Spring JPA related examples and notes
 <#>IMP<#>: all technical notes are in the code in comments at relevant places, marked with keyword "knote",
 so, to see all notes, search for ## "knote" ##
 
+- Lot of usage code, how to use various methods (normally what you do in Service level classes) is in "Test" classes implemented as Junit tests, that is very nice way to implement new code and try it out ! That way you can try and run it easily without whole infrastructure
 
 ## Transaction Management
 ## Transaction Isolation
