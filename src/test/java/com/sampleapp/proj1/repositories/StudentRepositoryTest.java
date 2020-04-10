@@ -61,6 +61,9 @@ public class StudentRepositoryTest {
 	/*
 	 * knote : way to specify isolation level for transaction.
 	 * 		- imp : isolation levels are ONLY AVAILALBE FOR "SPRING TRANSACTIONS" NOT JPA TRASACTIONS !
+	 * 		
+	 * 		-Also, JPA transactions are good if want to just talk to one type of DB (in method)
+	 * 			-but if we also have steps to talk to MQ, JMX etc, Spring Transaction covers all
 	 */
 	/*
 	 * knote: because we have LazyFetch and we want to make next query, we made this method Transactional
