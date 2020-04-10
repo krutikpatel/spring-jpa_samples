@@ -7,6 +7,9 @@ https://www.baeldung.com/spring-transactional-propagation-isolation
 
 Another good link: https://techannotation.wordpress.com/2014/12/04/5-minutes-with-spring-transaction-isolation-level/
 
+https://marcin-chwedczuk.github.io/spring-transactional-cheat-sheet
+
+
 Isolation is one of the common ACID properties: Atomicity, Consistency, Isolation, and Durability. Isolation describes how changes applied by concurrent transactions are visible to each other.
 
 Each isolation level prevents zero or more concurrency side effects on a transaction:
