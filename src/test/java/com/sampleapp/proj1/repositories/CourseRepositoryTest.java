@@ -71,8 +71,8 @@ public class CourseRepositoryTest {
 	public void testGetOneToMany() {
 		List<Review> reviews = new ArrayList<>();
 		
-		reviews.add(new Review("5", "Great Hands-on Stuff."));	
-		reviews.add(new Review("5", "Hatsoff."));
+		reviews.add(new Review(Review.Rating.FIVE, "Great Hands-on Stuff."));	
+		reviews.add(new Review(Review.Rating.FIVE, "Hatsoff."));
 
 		repository.addReviewsForCourse(10003L, reviews );
 		

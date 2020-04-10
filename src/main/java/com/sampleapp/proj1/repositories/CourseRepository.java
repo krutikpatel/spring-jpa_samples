@@ -60,8 +60,8 @@ public class CourseRepository {
 		logger.info("course.getReviews() -> {}", course.getReviews());
 		
 		//add 2 reviews to it
-		Review review1 = new Review("5", "Great Hands-on Stuff.");	
-		Review review2 = new Review("5", "Hatsoff.");
+		Review review1 = new Review(Review.Rating.FIVE, "Great Hands-on Stuff.");	
+		Review review2 = new Review(Review.Rating.FIVE, "Hatsoff.");
 		
 		/* knote: since this is bidirectional relationsship and we need to set data for both sides
 		 * setting the relationship
