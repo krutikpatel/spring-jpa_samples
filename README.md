@@ -25,4 +25,8 @@ get different rows after re-execution of a range query if another transaction ad
 
 We can set the isolation level of a transaction by @Transactional::isolation. 
 It has these five enumerations in Spring: 
-DEFAULT, READ_UNCOMMITTED, READ_COMMITTED, REPEATABLE_READ, SERIALIZABLE.
+* DEFAULT, 
+* READ_UNCOMMITTED, --> very common
+* READ_COMMITTED, 
+* REPEATABLE_READ, 
+* SERIALIZABLE.
