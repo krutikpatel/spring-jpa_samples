@@ -1,7 +1,7 @@
 package com.sampleapp.proj1.repositories;
 
 import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
+//import javax.transaction.Transactional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sampleapp.proj1.Proj1Application;
 import com.sampleapp.proj1.models.Student;
@@ -55,7 +57,11 @@ public class StudentRepositoryTest {
 	}
 	
 	@Test
-	@Transactional
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED) 
+	/*
+	 * knote : way to specify isolation level for transaction.
+	 * 		- imp : isolation levels are ONLY AVAILALBE FOR "SPRING TRANSACTIONS" NOT JPA TRASACTIONS !
+	 */
 	/*
 	 * knote: because we have LazyFetch and we want to make next query, we made this method Transactional
 	 * 			-Test for ManyToMany

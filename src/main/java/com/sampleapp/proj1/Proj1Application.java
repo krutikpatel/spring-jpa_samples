@@ -1,7 +1,6 @@
 package com.sampleapp.proj1;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.math.BigDecimal;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,11 +9,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.sampleapp.proj1.models.Course;
 import com.sampleapp.proj1.models.Coursebasic;
-import com.sampleapp.proj1.models.Review;
+import com.sampleapp.proj1.models.inheritance.FullTimeEmployee;
+import com.sampleapp.proj1.models.inheritance.PartTimeEmployee;
 import com.sampleapp.proj1.repositories.CourseRepository;
 import com.sampleapp.proj1.repositories.CoursebasicRepository;
+import com.sampleapp.proj1.repositories.EmployeeRepository;
 import com.sampleapp.proj1.repositories.StudentRepository;
 
 /*
@@ -40,6 +40,9 @@ public class Proj1Application implements CommandLineRunner {
 
 	@Autowired
 	private CourseRepository courseRepository;
+
+	@Autowired
+	private EmployeeRepository employeeRepository;
 
 	@Override
 	public void run(String... arg0) throws Exception {
@@ -69,6 +72,14 @@ public class Proj1Application implements CommandLineRunner {
 		logger.info("************"+c.getName());
 		logger.info("************"+c.getReviews().size());
 		*/
+		
+		/*
+		 * inheritence example
+		 */
+		employeeRepository.insert(new PartTimeEmployee("Jill", new BigDecimal("50")));
+		employeeRepository.insert(new FullTimeEmployee("Jack", new BigDecimal("10000")));
+
+		logger.info("All Employees -> {}", employeeRepository.retrieveAllEmployees());
 	}
 	
 }
