@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -22,6 +23,13 @@ public class Student {
 
 	@Column(nullable = false)
 	private String name;
+	
+	/*
+	 * knote : Embedded is example of how to quickly store some new class in same table as this class 
+	 * 				-(rather than creating OneToOne relationship and new table)
+	 */
+	@Embedded
+	private Address address;
 	
 	/*
 	 * knote: Lazy fetch of foreign key object, we dont always want to retrieve them with our main object.
@@ -56,6 +64,14 @@ public class Student {
 		this.name = name;
 	}
 
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	
 	public String getName() {
 		return name;
 	}
