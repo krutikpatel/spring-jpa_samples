@@ -1,6 +1,10 @@
 # spring-jpa_samples
 All Spring JPA related examples and notes
 
+<#>IMP<#>: all technical notes are in the code in comments at relevant places, marked with keyword "knote",
+so, to see all notes, search for ## "knote" ##
+
+
 ## Transaction Management
 ## Transaction Isolation
 https://www.baeldung.com/spring-transactional-propagation-isolation
