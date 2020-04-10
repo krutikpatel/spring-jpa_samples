@@ -4,6 +4,7 @@ All Spring JPA related examples and notes
 ## Transaction Management
 ## Transaction Isolation
 https://www.baeldung.com/spring-transactional-propagation-isolation
+
 Another good link: https://techannotation.wordpress.com/2014/12/04/5-minutes-with-spring-transaction-isolation-level/
 
 Isolation is one of the common ACID properties: Atomicity, Consistency, Isolation, and Durability. Isolation describes how changes applied by concurrent transactions are visible to each other.
